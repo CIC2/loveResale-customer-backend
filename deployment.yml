@@ -13,6 +13,9 @@ spec:
       labels:
         app: resale-customer-backend
     spec:
+      # <- add the imagePullSecrets here
+      imagePullSecrets:
+        - name: icr-secret
       containers:
         - name: resale-customer-backend
           image: de.icr.io/dev-registry/loveresale-customer-backend:latest
