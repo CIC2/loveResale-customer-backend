@@ -59,4 +59,5 @@ jobs:
       # 9. Restart deployment (pull new image)
       - name: Deploy to Kubernetes
         run: |
-          kubectl rollout restart deployment/resale-customer-backend -n ${{ secrets.REGISTRY_NAMESPACE }}
+          kubectl rollout restart deployment/${{ secrets.DEPLOYMENT_NAME }} \
+            -n ${{ secrets.NAMESPACE }}
