@@ -63,3 +63,4 @@ spec:
       targetPort: 8025
   selector:
     app: resale-customer-backend
+
