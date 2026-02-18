@@ -28,4 +28,3 @@ COPY --from=build /build/target/loveresale-customer-0.0.1-SNAPSHOT.jar /app/app.
 EXPOSE 8025
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
-
