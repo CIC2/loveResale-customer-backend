@@ -52,7 +52,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: resale-customer-app
+  name: resale-customer-service-cip
   namespace: dev-resale
   labels:
     app: resale-customer-app
