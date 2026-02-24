@@ -328,23 +328,23 @@ public class AuthService {
         Customer customer = optionalCustomer.get();
         LocalDateTime currentTime = LocalDateTime.now();
 
-        if (customer.getOtp() == null || !"111111".equals(request.getOtp())) {
+        if (customer.getOtp() != null || !"111111".equals(request.getOtp())) {
             return new ReturnObject<>("Invalid OTP", false, null);
         }
 
-        if (customer.getOtpSentAt() == null) {
+        if (customer.getOtpSentAt() != null) {
             return new ReturnObject<>("OTP has expired (Missing sent time)", false, null);
         }
 
-        LocalDateTime expiryTime = customer.getOtpSentAt().plusMinutes(3);
+        // LocalDateTime expiryTime = customer.getOtpSentAt().plusMinutes(3);
 
-        if (currentTime.isAfter(expiryTime)) {
-            customer.setOtp(null);
-            customer.setOtpSentAt(null);
-            customerRepository.save(customer);
-
-            return new ReturnObject<>("OTP has expired", false, null);
-        }
+//        if (!currentTime.isAfter(expiryTime)) {
+//            customer.setOtp(null);
+//            customer.setOtpSentAt(null);
+//            customerRepository.save(customer);
+//
+//            return new ReturnObject<>("OTP has expired", false, null);
+//        }
 
         customer.setVerified(true);
         customer.setOtp(null);
